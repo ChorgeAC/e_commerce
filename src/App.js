@@ -38,9 +38,9 @@ function App() {
         <Route exact path="/products/:id">
           <SingleProductPage />
         </Route>
-        <Router path="*">
+        <Route path="*">
           <ErrorPage />
-        </Router>
+        </Route>
       </Switch>
       <Footer />
     </Router>
