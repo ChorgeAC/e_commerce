@@ -33,7 +33,21 @@ const products_reducer = (state, action) => {
     };
   }
   if (action.type === GET_PRODUCTS_ERROR) {
-    return;
+    return { ...state, product_error: true };
+  }
+  if (action.type === GET_SINGLE_PRODUCT_BEGIN) {
+    return { ...state, singleProductLoading: true, singleProductError: false };
+  }
+  if (action.type === GET_SINGLE_PRODUCT_SUCCESS) {
+    return {
+      ...state,
+      singleProductError: false,
+      singleProductLoading: false,
+      singleProduct: action.payload,
+    };
+  }
+  if (action.type === GET_SINGLE_PRODUCT_ERROR) {
+    return { ...state, singleProductError: true };
   }
   throw new Error(`No Matching "${action.type}" - action type`);
 };
